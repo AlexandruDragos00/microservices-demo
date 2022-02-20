@@ -1,0 +1,89 @@
+version: '3.7'
+
+services:
+
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  adservice:
+    build:
+      context: ./src/adservice
+      dockerfile: Dockerfile 
+    ports: 
+      - "9555:9555"
+    env_file:
+      - ./src/adservice/env.list 
+  cartservice:
+    build:
+      context: ./src/cartservice/src
+      dockerfile: Dockerfile
+    ports:
+      - "7070:7070"
+    env_file:
+      - ./src/cartservice/src/env.list
+  checkoutservice:
+    build:
+      context: ./src/checkoutservice
+      dockerfile: Dockerfile
+    ports:
+      - "5050:5050"
+    env_file:
+      - ./src/checkoutservice/env.list
+  currencyservice:
+    build:
+      context: ./src/currencyservice
+      dockerfile: Dockerfile
+    ports:
+      - "7000:7000"
+    env_file:
+      - ./src/currencyservice/env.list
+  emailservice:
+    build:
+      context: ./src/emailservice
+      dockerfile: Dockerfile
+    ports:
+        - "8081:8081"
+    env_file:
+      - ./src/emailservice/env.list 
+  frontend:
+    build: 
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:8080"
+    env_file:
+      - ./src/frontend/env.list
+  paymentservice:
+    build: 
+      context: ./src/paymentservice
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"
+    env_file:
+      - ./src/paymentservice/env.list
+  productcatalogservice:
+    build:
+      context: ./src/productcatalogservice
+      dockerfile: Dockerfile
+    ports:
+      - "3550:3550"
+    env_file:
+      - ./src/productcatalogservice/env.list
+  recommendationservice:
+    build:
+      context: ./src/recommendationservice
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    env_file:
+      - ./src/recommendationservice/env.list
+  shippingservice:
+    build:
+      context: ./src/shippingservice
+      dockerfile: Dockerfile
+    ports:
+      - "50052:50052"
+    env_file:
+      - ./src/shippingservice/env.list
