@@ -86,3 +86,11 @@ services:
       - "50052:50052"
     env_file:
       - ./src/shippingservice/env.list
+
+  loadgenerator:
+    build:
+      context: ./src/loadgenerator
+      dockerfile: Dockerfile
+    env_file:
+      - ./src/loadgenerator/env.list
+      
