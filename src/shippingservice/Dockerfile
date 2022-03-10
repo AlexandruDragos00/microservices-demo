@@ -33,7 +33,7 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.6 && \
     chmod +x /bin/grpc_health_probe
 WORKDIR /src
 COPY --from=builder /go/bin/shippingservice /src/shippingservice
-ENV APP_PORT=50051
+ENV APP_PORT=50052
 
 # Definition of this variable is used by 'skaffold debug' to identify a golang binary.
 # Default behavior - a failure prints a stack trace for the current goroutine.

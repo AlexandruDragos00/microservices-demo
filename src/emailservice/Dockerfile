@@ -49,4 +49,5 @@ COPY --from=builder /usr/local/lib/python3.7/ /usr/local/lib/python3.7/
 COPY . .
 
 EXPOSE 8081
+
 ENTRYPOINT [ "python", "email_server.py" ]
