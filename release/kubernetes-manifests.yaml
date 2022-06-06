@@ -505,12 +505,13 @@ spec:
           value: "frontend:80"
       containers:
       - name: main
-        image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.3.6
+        image: microservices-demo_loadgenerator
+        imagePullPolicy: Never 
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
         - name: USERS
-          value: "10"
+          value: "750"
         resources:
           requests:
             cpu: 300m
@@ -518,6 +519,7 @@ spec:
           limits:
             cpu: 500m
             memory: 512Mi
+            
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -86,11 +86,14 @@ services:
       - "50052:50052"
     env_file:
       - ./src/shippingservice/env.list
-
   loadgenerator:
     build:
       context: ./src/loadgenerator
       dockerfile: Dockerfile
     env_file:
       - ./src/loadgenerator/env.list
-      
+    volumes:
+      - locust_files_1250_v1:/loadgen
+
+volumes:
+  locust_files_1250_v1:

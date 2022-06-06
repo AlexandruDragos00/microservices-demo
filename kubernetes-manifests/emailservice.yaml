@@ -29,7 +29,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: emailservice
+        image: drarazvan/emailservice
         ports:
         - containerPort: 8080
         env:
@@ -47,13 +47,7 @@ spec:
           periodSeconds: 5
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:8080"]
-        resources:
-          requests:
-            cpu: 100m
-            memory: 64Mi
-          limits:
-            cpu: 200m
-            memory: 128Mi
+
 ---
 apiVersion: v1
 kind: Service
