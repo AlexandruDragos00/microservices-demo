@@ -1,12 +1,14 @@
-version: '3.7'
+version: '2'
 
 services:
 
   redis:
     image: redis:alpine
+    mem_limit: 183M
     ports:
       - "6379:6379"
   adservice:
+    mem_limit: 183M
     build:
       context: ./src/adservice
       dockerfile: Dockerfile 
@@ -15,6 +17,7 @@ services:
     env_file:
       - ./src/adservice/env.list 
   cartservice:
+    mem_limit: 183M
     build:
       context: ./src/cartservice/src
       dockerfile: Dockerfile
@@ -23,6 +26,7 @@ services:
     env_file:
       - ./src/cartservice/src/env.list
   checkoutservice:
+    mem_limit: 183M
     build:
       context: ./src/checkoutservice
       dockerfile: Dockerfile
@@ -31,6 +35,7 @@ services:
     env_file:
       - ./src/checkoutservice/env.list
   currencyservice:
+    mem_limit: 183M
     build:
       context: ./src/currencyservice
       dockerfile: Dockerfile
@@ -39,6 +44,7 @@ services:
     env_file:
       - ./src/currencyservice/env.list
   emailservice:
+    mem_limit: 183M
     build:
       context: ./src/emailservice
       dockerfile: Dockerfile
@@ -47,6 +53,7 @@ services:
     env_file:
       - ./src/emailservice/env.list 
   frontend:
+    mem_limit: 183M
     build: 
       context: ./src/frontend
       dockerfile: Dockerfile
@@ -55,6 +62,7 @@ services:
     env_file:
       - ./src/frontend/env.list
   paymentservice:
+    mem_limit: 183M
     build: 
       context: ./src/paymentservice
       dockerfile: Dockerfile
@@ -63,6 +71,7 @@ services:
     env_file:
       - ./src/paymentservice/env.list
   productcatalogservice:
+    mem_limit: 183M
     build:
       context: ./src/productcatalogservice
       dockerfile: Dockerfile
@@ -71,6 +80,7 @@ services:
     env_file:
       - ./src/productcatalogservice/env.list
   recommendationservice:
+    mem_limit: 183M
     build:
       context: ./src/recommendationservice
       dockerfile: Dockerfile
@@ -79,6 +89,7 @@ services:
     env_file:
       - ./src/recommendationservice/env.list
   shippingservice:
+    mem_limit: 183M
     build:
       context: ./src/shippingservice
       dockerfile: Dockerfile
@@ -87,6 +98,7 @@ services:
     env_file:
       - ./src/shippingservice/env.list
   loadgenerator:
+    mem_limit: 183M
     build:
       context: ./src/loadgenerator
       dockerfile: Dockerfile
