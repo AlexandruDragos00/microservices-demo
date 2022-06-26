@@ -44,6 +44,9 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+        resources:
+          requests:
+            memory: 180Mi
 ---
 apiVersion: v1
 kind: Service

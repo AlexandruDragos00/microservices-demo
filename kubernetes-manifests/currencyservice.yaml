@@ -48,6 +48,9 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7000"]
+        resources:
+          requests:
+            memory: 180Mi
 
 ---
 apiVersion: v1

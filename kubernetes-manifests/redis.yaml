@@ -41,6 +41,9 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: redis-data
+        resources:
+          requests:
+            memory: 180Mi
       volumes:
       - name: redis-data
         emptyDir: {}

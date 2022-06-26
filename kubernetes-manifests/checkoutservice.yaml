@@ -37,6 +37,10 @@ spec:
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:5050"]
+          resources:
+            requests:
+              memory: 180Mi
+           
           env:
           - name: PORT
             value: "5050"

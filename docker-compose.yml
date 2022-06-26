@@ -4,11 +4,15 @@ services:
 
   redis:
     image: redis:alpine
-    mem_limit: 183M
+    mem_reservation: 200M
+    mem_limit: 256m
+    cpus: 1.25
     ports:
       - "6379:6379"
   adservice:
-    mem_limit: 183M
+    mem_limit: 300m
+    mem_reservation: 180M 
+    cpus: 0.2
     build:
       context: ./src/adservice
       dockerfile: Dockerfile 
@@ -17,7 +21,9 @@ services:
     env_file:
       - ./src/adservice/env.list 
   cartservice:
-    mem_limit: 183M
+    mem_limit: 128m
+    mem_reservation: 64M
+    cpus: 0.2
     build:
       context: ./src/cartservice/src
       dockerfile: Dockerfile
@@ -26,7 +32,9 @@ services:
     env_file:
       - ./src/cartservice/src/env.list
   checkoutservice:
-    mem_limit: 183M
+    cpus: 0.1
+    mem_limit: 128m
+    mem_reservation: 64M
     build:
       context: ./src/checkoutservice
       dockerfile: Dockerfile
@@ -35,7 +43,9 @@ services:
     env_file:
       - ./src/checkoutservice/env.list
   currencyservice:
-    mem_limit: 183M
+    mem_limit: 128m
+    mem_reservation: 64M
+    cpus: 0.1
     build:
       context: ./src/currencyservice
       dockerfile: Dockerfile
@@ -44,7 +54,9 @@ services:
     env_file:
       - ./src/currencyservice/env.list
   emailservice:
-    mem_limit: 183M
+    mem_limit: 128m
+    mem_reservation: 64M
+    cpus: 0.1
     build:
       context: ./src/emailservice
       dockerfile: Dockerfile
@@ -53,7 +65,9 @@ services:
     env_file:
       - ./src/emailservice/env.list 
   frontend:
-    mem_limit: 183M
+    mem_limit: 128m
+    mem_reservation: 64M
+    cpus: 0.1
     build: 
       context: ./src/frontend
       dockerfile: Dockerfile
@@ -62,7 +76,9 @@ services:
     env_file:
       - ./src/frontend/env.list
   paymentservice:
-    mem_limit: 183M
+    mem_limit: 128m
+    mem_reservation: 64M
+    cpus: 0.1
     build: 
       context: ./src/paymentservice
       dockerfile: Dockerfile
@@ -71,7 +87,9 @@ services:
     env_file:
       - ./src/paymentservice/env.list
   productcatalogservice:
-    mem_limit: 183M
+    mem_limit: 128m
+    mem_reservation: 64M
+    cpus: 0.1
     build:
       context: ./src/productcatalogservice
       dockerfile: Dockerfile
@@ -80,7 +98,9 @@ services:
     env_file:
       - ./src/productcatalogservice/env.list
   recommendationservice:
-    mem_limit: 183M
+    mem_limit: 300m
+    mem_reservation: 220M
+    cpus: 0.1
     build:
       context: ./src/recommendationservice
       dockerfile: Dockerfile
@@ -89,7 +109,9 @@ services:
     env_file:
       - ./src/recommendationservice/env.list
   shippingservice:
-    mem_limit: 183M
+    mem_limit: 128m
+    mem_reservation: 64M
+    cpus: 0.1
     build:
       context: ./src/shippingservice
       dockerfile: Dockerfile
@@ -98,14 +120,18 @@ services:
     env_file:
       - ./src/shippingservice/env.list
   loadgenerator:
-    mem_limit: 183M
+    mem_limit: 521M 
+    mem_reservation: 256m
+    cpus: 0.3
     build:
       context: ./src/loadgenerator
       dockerfile: Dockerfile
     env_file:
       - ./src/loadgenerator/env.list
     volumes:
-      - locust_files_1250_v1:/loadgen
+      - locust_files_10:/loadgen
 
 volumes:
-  locust_files_1250_v1:
+  locust_files_10:
+
+ 

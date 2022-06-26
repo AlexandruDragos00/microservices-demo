@@ -54,3 +54,6 @@ spec:
           value: "frontend:80"
         - name: USERS
           value: "1250"
+        resources:
+          requests:
+            memory: 180Mi
